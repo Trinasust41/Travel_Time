@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="Layout(content)">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title th:text="${title}">Travel agency website</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+
+</head>
+<body>
+ <header>
+
+        <div id="menu-bar" class="fas fa-bars"></div>
+
+        <a href="#" class="logo"><span>T</span>ravel Time!</a>
+
+        <nav class="navbar">
+            <a th:href="@{/}">home</a>
+            <a href="#book">book</a>
+            <a href="#packages">packages</a>
+            <a href="#services">services</a>
+            <a href="#gallery">gallery</a>
+            <a href="#review">review</a>
+            <a href="#contact">contact</a>
+            <a th:href="@{/signup/}">signup</a>
+        </nav>
+
+        <div class="icons">
+            <i class="fas fa-search" id="search-btn"></i>
+            <i class="fas fa-user" id="login-btn"></i>
+        </div>
+
+        <form action="" class="search-bar-container">
+            <input type="search" id="search-bar" placeholder="search here...">
+            <label for="search-bar" class="fas fa-search"></label>
+        </form>
+
+    </header>
+    
+    <div class="container">
+    <div class="row">
+    <div class="col-md-8 offset-md-2">
+    <div class="my-card mt-3">
+    <!--
+     <div th:if="${session.message}" th:classappend="${session.message.type}" class="alert " role="alert">
+   <p th:text="${session.message.content}"></p>
+   <th:block th:text="${#session.removeAttribute("message")}"></th:block>
+    </div>
+    -->
+    
+    
+    
+    
+   
+    
+    
+    
+    
+    <h1 class="text-center">Register Here!!</h1>
+    <form novalidate action="" th:action="@{/do_register}" method="post" th:object="${user}">
+    
+     <div class="form-group ">
+    <label for="name_field" >Your Name</label>
+    <input 
+    name="name"
+    type="text" class="form-control" 
+     th:classapend="${#fields.hasErrors('name')?'is-invalid':''}"
+    id="name_field" aria-describedby="emailHelp"
+    placeholder="Enter Here"
+    required
+    
+    th:value="${user.name}"
+    />
+    <div class="invalid-feedback" th:each="e : ${#fields.errors('name')}" th:text="${e}">
+    </div>
+    
+  </div>
+  
+  
+  
+   <div class="form-group ">
+    <label for="email_field" >Your Email</label>
+    <input
+    name="email"
+     type="email" class="form-control"
+    
+      id="email_field" aria-describedby="emailHelp"
+    placeholder="Enter Here"
+    required
+     th:value="${user.email}"/>
+    
+  </div>
+  
+  
+   <div class="form-group ">
+    <label for="password_field" >Your Password</label>
+    <input 
+    name="password"
+    type="password" class="form-control" id="password_field" aria-describedby="emailHelp"
+    placeholder="Enter Here"
+    required
+     
+    
+  </div>
+  
+  
+  
+  <div class="form-group mt-3">
+  <textarea
+   
+  name="about"
+   th:text="${user.about}" placeholder="Enter something about yourself " rows="10" class="form-control"
+   
+  ></textarea>
+  </div>
+  
+   <div class="form-group form-check text-center">
+   <input type="checkbox"
+   name="agreement"
+   class="form-check-input"
+   id="agreement"
+   />
+   <label for ="agreement"> Accept terms and conditions</label>
+  
+  
+  <div class="container text-center">
+  
+  
+  
+  <button type="submit" class="btn bg-primary  text-white">
+  Submit
+  </button>
+  
+  <button type="reset" class="btn bg-warning ">
+  Reset
+  </button>
+  </div>
+  
+  
+  
+     
+    </form>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    
+    
+    
+</body>
